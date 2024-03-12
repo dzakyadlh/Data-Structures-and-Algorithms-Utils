@@ -165,8 +165,23 @@ def merge(left, right):
     return result
 
 
+# O(log_2 n)
+def binary_search(arr, target):
+    arr = quick_sort(arr, 0, len(arr) - 1)
+    low = 0
+    high = len(arr) - 1
+    while low <= high:
+        mid = (low + high) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            low = mid + 1
+        else:
+            high = mid - 1
+    return -1
+
+
 arr = [4, 1, 6, 8, 2, 4, 7, 7, 9, 1, 2, 10, 17, 2, 4, 6]
 arr2 = [170, 45, 75, 90, 802, 24, 2, 66]
 
-print(merge_sort(arr))
-print(7 // 2)
+print(binary_search(arr, 4))
